@@ -1,6 +1,6 @@
 /* ============================================================
-   FITNESS FIRST BY DELUXE GYM — MAIN JAVASCRIPT
-   Version : 3.0  (Bug Free | Animated | Mobile Optimized)
+   FITNESS FIRST BY DELUXE GYM — OPTIMIZED JAVASCRIPT
+   Version : 4.0  (Single Page | Light-weight | Bug Free)
    ============================================================ */
 
 (function () {
@@ -23,9 +23,9 @@
             }
         }
         window.addEventListener('load', function () {
-            setTimeout(hidePreloader, 500);
+            setTimeout(hidePreloader, 400);
         });
-        setTimeout(hidePreloader, 3000); // Failsafe
+        setTimeout(hidePreloader, 2500); // Failsafe
 
 
         /* ======================================================
@@ -37,7 +37,7 @@
             if (!navbar) return;
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
-            } else if (!navbar.hasAttribute('data-always-solid')) {
+            } else {
                 navbar.classList.remove('scrolled');
             }
         }
@@ -79,7 +79,7 @@
 
         if (navOverlay) navOverlay.addEventListener('click', closeMenu);
 
-        // Close menu on any nav link click
+        // Close menu on nav link click
         document.querySelectorAll('.nav-menu a').forEach(function (link) {
             link.addEventListener('click', closeMenu);
         });
@@ -89,18 +89,18 @@
             if (e.key === 'Escape') closeMenu();
         });
 
-        // Close menu if resized to desktop
+        // Close menu if resized to desktop window
         var resizeTimer;
         window.addEventListener('resize', function () {
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(function () {
                 if (window.innerWidth > 992) closeMenu();
-            }, 180);
+            }, 150);
         });
 
 
         /* ======================================================
-           4. SCROLL REVEAL ANIMATIONS
+           4. SCROLL REVEAL ANIMATIONS (Intersection Observer)
            ====================================================== */
         var animatedEls = document.querySelectorAll('.animate-on-scroll');
 
@@ -113,7 +113,7 @@
                             observer.unobserve(entry.target);
                         }
                     });
-                }, { rootMargin: '0px 0px -60px 0px', threshold: 0.08 });
+                }, { rootMargin: '0px 0px -50px 0px', threshold: 0.05 });
 
                 animatedEls.forEach(function (el) { revealObserver.observe(el); });
             } else {
@@ -123,20 +123,19 @@
 
 
         /* ======================================================
-           5. ANIMATED NUMBER COUNTERS
+           5. ANIMATED STAT COUNTERS
            ====================================================== */
         function animateCounter(el) {
             var target = parseInt(el.getAttribute('data-count'), 10);
             if (isNaN(target)) return;
 
-            var duration = 1800;
+            var duration = 1500;
             var startTime = null;
 
             function step(timestamp) {
                 if (!startTime) startTime = timestamp;
                 var progress = Math.min((timestamp - startTime) / duration, 1);
-                // easeOutExpo
-                var eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+                var eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress); // easeOutExpo
                 el.textContent = Math.floor(eased * target);
                 if (progress < 1) {
                     requestAnimationFrame(step);
@@ -157,7 +156,7 @@
                             observer.unobserve(entry.target);
                         }
                     });
-                }, { threshold: 0.4 });
+                }, { threshold: 0.3 });
                 counters.forEach(function (c) { countObserver.observe(c); });
             } else {
                 counters.forEach(function (c) { c.textContent = c.getAttribute('data-count'); });
@@ -171,7 +170,7 @@
         var scrollBtn = document.querySelector('.scroll-top');
         if (scrollBtn) {
             window.addEventListener('scroll', function () {
-                scrollBtn.classList.toggle('visible', window.scrollY > 420);
+                scrollBtn.classList.toggle('visible', window.scrollY > 400);
             }, { passive: true });
 
             scrollBtn.addEventListener('click', function () {
@@ -181,7 +180,7 @@
 
 
         /* ======================================================
-           7. SMOOTH ANCHOR SCROLL (with navbar offset)
+           7. SMOOTH ANCHOR SCROLL
            ====================================================== */
         document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
             anchor.addEventListener('click', function (e) {
@@ -194,47 +193,15 @@
                 e.preventDefault();
                 closeMenu();
 
-                var navHeight = navbar ? navbar.offsetHeight : 70;
-                var top = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 10;
+                var navHeight = navbar ? navbar.offsetHeight : 65;
+                var top = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 8;
                 window.scrollTo({ top: top, behavior: 'smooth' });
             });
         });
 
 
         /* ======================================================
-           8. FAQ ACCORDION
-           ====================================================== */
-        var faqItems = document.querySelectorAll('.faq-item');
-        faqItems.forEach(function (item) {
-            var question = item.querySelector('.faq-question');
-            var answer = item.querySelector('.faq-answer');
-            if (!question || !answer) return;
-
-            question.addEventListener('click', function () {
-                var isActive = item.classList.contains('active');
-
-                faqItems.forEach(function (other) {
-                    other.classList.remove('active');
-                    var a = other.querySelector('.faq-answer');
-                    if (a) a.style.maxHeight = null;
-                });
-
-                if (!isActive) {
-                    item.classList.add('active');
-                    answer.style.maxHeight = answer.scrollHeight + 'px';
-                }
-            });
-        });
-
-        // Recalculate open FAQ height on resize
-        window.addEventListener('resize', function () {
-            var openFaq = document.querySelector('.faq-item.active .faq-answer');
-            if (openFaq) openFaq.style.maxHeight = openFaq.scrollHeight + 'px';
-        });
-
-
-        /* ======================================================
-           9. BUTTON RIPPLE EFFECT (All buttons animated)
+           8. BUTTON RIPPLE EFFECT
            ====================================================== */
         function createRipple(e) {
             var btn = this;
@@ -255,7 +222,7 @@
             circle.classList.add('ripple');
 
             btn.appendChild(circle);
-            setTimeout(function () { if (circle) circle.remove(); }, 650);
+            setTimeout(function () { if (circle) circle.remove(); }, 600);
         }
 
         document.querySelectorAll('.btn').forEach(function (btn) {
@@ -264,7 +231,7 @@
 
 
         /* ======================================================
-           10. WHATSAPP BUTTONS
+           9. WHATSAPP & PHONE CALL HANDLING
            ====================================================== */
         function openWhatsApp(message) {
             var url = 'https://wa.me/' + WA_NUMBER;
@@ -272,7 +239,7 @@
             window.open(url, '_blank');
         }
 
-        // Plan / Package specific buttons
+        // Pricing Cards / Book Free Demo click handler
         document.querySelectorAll('.plan-whatsapp').forEach(function (btn) {
             btn.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -284,7 +251,7 @@
             });
         });
 
-        // General WhatsApp buttons (floating + hero)
+        // General WhatsApp button handler
         document.querySelectorAll('.btn-wa-general').forEach(function (btn) {
             btn.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -293,7 +260,7 @@
             });
         });
 
-        // Direct call buttons tracking (no preventDefault — tel: must work)
+        // Dial button notification
         document.querySelectorAll('.btn-call').forEach(function (btn) {
             btn.addEventListener('click', function () {
                 showNotif('Dialing 0300 4840437...', 'success');
@@ -302,54 +269,7 @@
 
 
         /* ======================================================
-           11. CONTACT FORM → WHATSAPP
-           ====================================================== */
-        var contactForm = document.getElementById('contactForm');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function (e) {
-                e.preventDefault();
-
-                var nameEl = document.getElementById('name');
-                var phoneEl = document.getElementById('phone');
-                var emailEl = document.getElementById('email');
-                var goalEl = document.getElementById('goal');
-                var msgEl = document.getElementById('message');
-
-                var name = nameEl ? nameEl.value.trim() : '';
-                var phone = phoneEl ? phoneEl.value.trim() : '';
-                var email = emailEl ? emailEl.value.trim() : '';
-                var goal = goalEl ? goalEl.value : '';
-                var message = msgEl ? msgEl.value.trim() : '';
-
-                if (!name) {
-                    showNotif('Please enter your name', 'error');
-                    if (nameEl) nameEl.focus();
-                    return;
-                }
-                if (!phone || phone.replace(/\D/g, '').length < 10) {
-                    showNotif('Please enter a valid phone number', 'error');
-                    if (phoneEl) phoneEl.focus();
-                    return;
-                }
-
-                var text = '*New Inquiry — ' + GYM_NAME + '*\n\n';
-                text += '*Name:* ' + name + '\n';
-                text += '*Phone:* ' + phone + '\n';
-                if (email) text += '*Email:* ' + email + '\n';
-                if (goal) text += '*Goal:* ' + goal + '\n';
-                if (message) text += '*Message:* ' + message;
-
-                showNotif('Redirecting to WhatsApp...', 'success');
-                setTimeout(function () {
-                    openWhatsApp(text);
-                    contactForm.reset();
-                }, 400);
-            });
-        }
-
-
-        /* ======================================================
-           12. NEWSLETTER FORM
+           10. NEWSLETTER FORM SUBMIT
            ====================================================== */
         document.querySelectorAll('.newsletter-form').forEach(function (form) {
             form.addEventListener('submit', function (e) {
@@ -369,7 +289,7 @@
 
 
         /* ======================================================
-           13. NOTIFICATION SYSTEM
+           11. NOTIFICATION SYSTEM
            ====================================================== */
         function showNotif(message, type) {
             var old = document.querySelector('.notif');
@@ -395,14 +315,14 @@
                 n.style.transition = 'opacity .4s ease, transform .4s ease';
                 n.style.opacity = '0';
                 n.style.transform = 'translateX(50px)';
-                setTimeout(function () { if (n.parentNode) n.remove(); }, 420);
-            }, 3200);
+                setTimeout(function () { if (n.parentNode) n.remove(); }, 400);
+            }, 3000);
         }
         window.showNotif = showNotif;
 
 
         /* ======================================================
-           14. INFINITE GALLERY (Clone for seamless loop)
+           12. INFINITE LOOPING GALLERY STRIP
            ====================================================== */
         var gallery = document.querySelector('.gallery-scroll');
         if (gallery && !gallery.hasAttribute('data-cloned')) {
@@ -412,7 +332,7 @@
 
 
         /* ======================================================
-           15. BROKEN IMAGE FALLBACK (Agar koi pic missing ho)
+           13. BROKEN IMAGE FALLBACK
            ====================================================== */
         document.querySelectorAll('img').forEach(function (img) {
             img.addEventListener('error', function () {
@@ -429,13 +349,31 @@
 
 
         /* ======================================================
-           16. AUTO ACTIVE NAV LINK
+           14. DYNAMIC SCROLL SPY (Auto Active Nav Menu Links)
            ====================================================== */
-        var path = window.location.pathname.split('/').pop() || 'index.html';
-        document.querySelectorAll('.nav-menu a').forEach(function (link) {
-            var href = link.getAttribute('href');
-            if (href === path) link.classList.add('active');
-        });
+        var navLinks = document.querySelectorAll('.nav-menu a:not(.btn)');
+        var sections = document.querySelectorAll('#home, #about, #plans, #contact');
+
+        if (sections.length && 'IntersectionObserver' in window) {
+            var spyObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        var id = entry.target.getAttribute('id');
+                        navLinks.forEach(function (link) {
+                            if (link.getAttribute('href') === '#' + id) {
+                                link.classList.add('active');
+                            } else {
+                                link.classList.remove('active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-25% 0px -55% 0px', threshold: 0 });
+
+            sections.forEach(function (sec) {
+                spyObserver.observe(sec);
+            });
+        }
 
     }); // DOMContentLoaded end
 })();
