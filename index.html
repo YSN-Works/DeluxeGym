@@ -8,6 +8,7 @@
     <meta name="description"
         content="Fitness First by Deluxe Gym - Lahore's premium fitness center at Pivot Emporium, Model Town Link Road. Modern equipment, certified trainers, open till 12:30 AM.">
     <title>Fitness First by Deluxe Gym | Premium Gym in Model Town, Lahore</title>
+    <link rel="icon" href="assets/logo.jpg" type="image/jpeg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,6 +25,7 @@
     <div class="preloader">
         <div class="preloader-inner">
             <div class="loader-ring"></div>
+            <p class="brand-sub">Fitness First by</p>
             <p class="brand-name">Deluxe <span>Gym</span></p>
         </div>
     </div>
@@ -34,19 +36,21 @@
     <!-- ============ NAVBAR ============ -->
     <nav class="navbar">
         <div class="container">
-            <a href="index.html" class="navbar-brand">
-                <div class="logo-icon">DG</div>
-                <div>
-                    <div class="logo-text">Fitness<span>First</span></div>
-                    <span class="logo-sub">BY DELUXE GYM</span>
+            <a href="#home" class="navbar-brand">
+                <div class="logo-image">
+                    <img src="assets/logo.jpg" alt="Deluxe Gym Logo">
+                </div>
+                <div class="logo-text-wrapper">
+                    <span class="logo-sub">Fitness First by</span>
+                    <div class="logo-text">Deluxe<span>Gym</span></div>
                 </div>
             </a>
 
             <div class="nav-menu">
-                <a href="index.html" class="active">Home</a>
-                <a href="about.html">About</a>
-                <a href="pricing.html">Pricing</a>
-                <a href="contact.html">Contact</a>
+                <a href="#home" class="active">Home</a>
+                <a href="#about">About</a>
+                <a href="#plans">Pricing</a>
+                <a href="#contact">Contact</a>
                 <div class="nav-cta">
                     <a href="#plans" class="btn btn-primary btn-sm">Join Now</a>
                 </div>
@@ -59,9 +63,16 @@
     </nav>
 
     <!-- ============ HERO ============ -->
+    <!-- ============ HERO ============ -->
     <section class="hero" id="home">
-        <div class="hero-video-bg">
-            <img src="assets/pic1.jpg" alt="Deluxe Gym Lahore Interior">
+        <!-- Responsive Background Images -->
+        <div class="hero-bg">
+            <picture>
+                <!-- Mobile Image (Loads only on screens 768px or smaller) -->
+                <source media="(max-width: 768px)" srcset="assets/hero-mobile.jpg">
+                <!-- Desktop Image (Default) -->
+                <img src="assets/hero-desktop.jpg" alt="Deluxe Gym Premium Fitness Center">
+            </picture>
             <div class="overlay"></div>
         </div>
 
@@ -74,7 +85,7 @@
 
                 <h1>
                     <span class="thin">Transform</span><br>
-                    <span class="accent-line">Your Body</span><br>
+                    <span class="accent-glow">Your Body</span><br>
                     <span class="thin">Your Life</span>
                 </h1>
 
@@ -112,8 +123,7 @@
 
         <div class="hero-scroll-hint"><i class="fas fa-chevron-down"></i></div>
     </section>
-
-    <!-- ============ HIGHLIGHTS ============ -->
+    <!-- ============ HIGHLIGHTS (PC ONLY) ============ -->
     <section class="highlights section-padding">
         <div class="container">
             <div class="highlights-grid">
@@ -146,24 +156,47 @@
         </div>
     </section>
 
-    <!-- ============ ABOUT PREVIEW (Big + Small pic5.jpg) ============ -->
-    <section class="about-preview section-padding bg-surface">
+    <!-- ============ GALLERY STRIP (NOW BEFORE ABOUT) ============ -->
+    <section class="gallery-strip">
+        <div class="gallery-scroll">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80" loading="lazy"
+                    alt="Gym Gallery 1">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=600&q=80" loading="lazy"
+                    alt="Gym Gallery 2">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&q=80" loading="lazy"
+                    alt="Gym Gallery 3">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1558611848-73f7eb4001a1?w=600&q=80" loading="lazy"
+                    alt="Gym Gallery 4">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80" loading="lazy"
+                    alt="Gym Gallery 5">
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ ABOUT PREVIEW ============ -->
+    <section class="about-preview section-padding bg-surface" id="about">
         <div class="container">
             <div class="about-preview-grid">
 
                 <!-- IMAGES -->
                 <div class="about-preview-images animate-on-scroll">
-                    <!-- BIG IMAGE -->
                     <div class="img-main">
                         <img src="assets/pic3.jpg" loading="lazy" alt="Deluxe Gym Interior Lahore">
                     </div>
 
-                    <!-- SMALL FLOATING IMAGE (pic5.jpg) ✅ -->
                     <div class="img-float">
                         <img src="assets/pic5.jpg" loading="lazy" alt="Personal Training at Deluxe Gym">
                     </div>
 
-                    <!-- EXPERIENCE BADGE -->
                     <div class="experience-tag">
                         <div class="number">10<span>+</span></div>
                         <p>Years Exp.</p>
@@ -187,8 +220,8 @@
                         <li><span class="check"><i class="fas fa-check"></i></span> Diet Planning</li>
                         <li><span class="check"><i class="fas fa-check"></i></span> Free Parking</li>
                     </ul>
-                    <a href="about.html" class="btn btn-outline">
-                        Learn More <i class="fas fa-arrow-right"></i>
+                    <a href="#plans" class="btn btn-outline">
+                        View Plans <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
 
@@ -196,84 +229,72 @@
         </div>
     </section>
 
-    <!-- ============ PROGRAMS ============ -->
-    <section class="programs section-padding">
+    <!-- ============ VIDEO SHOWCASE (Replaces Programs) ============ -->
+    <section class="video-showcase section-padding">
         <div class="container">
             <div class="section-header animate-on-scroll">
-                <span class="section-tag">Programs</span>
-                <h2>What We <span>Offer</span></h2>
-                <p>Specialized training programs designed for every fitness level and goal.</p>
+                <span class="section-tag">In Action</span>
+                <h2>See The <span>Energy</span></h2>
+                <p>Real moments from our gym floor — intense training, dedicated members, zero compromise.</p>
             </div>
 
-            <div class="programs-grid">
-                <div class="program-card animate-on-scroll delay-1">
-                    <div class="program-image">
-                        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80"
-                            loading="lazy" alt="Weight Loss Program">
-                    </div>
-                    <div class="program-overlay"></div>
-                    <span class="program-number">01</span>
-                    <div class="program-content">
-                        <span class="program-tag">Popular</span>
-                        <h3>Weight Loss</h3>
+            <div class="video-bento-grid">
+
+                <!-- Video 1 - BIG LEFT -->
+                <div class="video-tile tile-1 animate-on-scroll">
+                    <video autoplay muted loop playsinline preload="metadata" poster="assets/pic1.jpg">
+                        <source src="https://cdn.pixabay.com/video/2024/03/15/204056-924893534_large.mp4"
+                            type="video/mp4">
+                    </video>
+                    <div class="video-tile-overlay">
+                        <span class="tile-tag"><i class="fas fa-dumbbell"></i> Strength</span>
                     </div>
                 </div>
 
-                <div class="program-card animate-on-scroll delay-2">
-                    <div class="program-image">
-                        <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&q=80"
-                            loading="lazy" alt="Muscle Building Program">
-                    </div>
-                    <div class="program-overlay"></div>
-                    <span class="program-number">02</span>
-                    <div class="program-content">
-                        <span class="program-tag">Trending</span>
-                        <h3>Muscle Building</h3>
+                <!-- Video 2 - TOP RIGHT -->
+                <div class="video-tile tile-2 animate-on-scroll delay-1">
+                    <video autoplay muted loop playsinline preload="metadata" poster="assets/pic3.jpg">
+                        <source src="https://cdn.pixabay.com/video/2020/10/19/52581-471759740_large.mp4"
+                            type="video/mp4">
+                    </video>
+                    <div class="video-tile-overlay">
+                        <span class="tile-tag"><i class="fas fa-fire"></i> HIIT</span>
                     </div>
                 </div>
 
-                <div class="program-card animate-on-scroll delay-3">
-                    <div class="program-image">
-                        <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?w=600&q=80"
-                            loading="lazy" alt="Cardio and HIIT">
-                    </div>
-                    <div class="program-overlay"></div>
-                    <span class="program-number">03</span>
-                    <div class="program-content">
-                        <span class="program-tag">Fitness</span>
-                        <h3>Cardio &amp; HIIT</h3>
+                <!-- Video 3 - MIDDLE RIGHT -->
+                <div class="video-tile tile-3 animate-on-scroll delay-2">
+                    <video autoplay muted loop playsinline preload="metadata" poster="assets/pic5.jpg">
+                        <source src="https://cdn.pixabay.com/video/2020/04/12/35083-408490584_large.mp4"
+                            type="video/mp4">
+                    </video>
+                    <div class="video-tile-overlay">
+                        <span class="tile-tag"><i class="fas fa-heartbeat"></i> Cardio</span>
                     </div>
                 </div>
 
-                <div class="program-card animate-on-scroll delay-4">
-                    <div class="program-image">
-                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80"
-                            loading="lazy" alt="Personal Training">
-                    </div>
-                    <div class="program-overlay"></div>
-                    <span class="program-number">04</span>
-                    <div class="program-content">
-                        <span class="program-tag">Premium</span>
-                        <h3>Personal Training</h3>
+                <!-- Video 4 - BOTTOM LEFT -->
+                <div class="video-tile tile-4 animate-on-scroll delay-3">
+                    <video autoplay muted loop playsinline preload="metadata" poster="assets/pic1.jpg">
+                        <source src="https://cdn.pixabay.com/video/2022/03/15/110624-688470509_large.mp4"
+                            type="video/mp4">
+                    </video>
+                    <div class="video-tile-overlay">
+                        <span class="tile-tag"><i class="fas fa-bolt"></i> Power</span>
                     </div>
                 </div>
+
+                <!-- Video 5 - BOTTOM RIGHT -->
+                <div class="video-tile tile-5 animate-on-scroll delay-4">
+                    <video autoplay muted loop playsinline preload="metadata" poster="assets/pic3.jpg">
+                        <source src="https://cdn.pixabay.com/video/2024/06/17/217030_large.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-tile-overlay">
+                        <span class="tile-tag"><i class="fas fa-trophy"></i> Results</span>
+                    </div>
+                </div>
+
             </div>
-        </div>
-    </section>
-
-    <!-- ============ GALLERY STRIP ============ -->
-    <section class="gallery-strip">
-        <div class="gallery-scroll">
-            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&q=70" loading="lazy"
-                alt="Gym Gallery 1">
-            <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=500&q=70" loading="lazy"
-                alt="Gym Gallery 2">
-            <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=500&q=70" loading="lazy"
-                alt="Gym Gallery 3">
-            <img src="https://images.unsplash.com/photo-1558611848-73f7eb4001a1?w=500&q=70" loading="lazy"
-                alt="Gym Gallery 4">
-            <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=500&q=70" loading="lazy"
-                alt="Gym Gallery 5">
         </div>
     </section>
 
@@ -413,7 +434,7 @@
     </section>
 
     <!-- ============ CTA BANNER ============ -->
-    <section class="section-padding" style="padding-top:0;">
+    <section class="section-padding" id="contact" style="padding-top:0;">
         <div class="container">
             <div class="cta-banner animate-on-scroll">
                 <h2>Ready To <span>Start</span> Today?</h2>
@@ -437,8 +458,13 @@
                 <div class="footer-grid">
                     <div class="footer-brand">
                         <div class="footer-logo">
-                            <div class="logo-icon">DG</div>
-                            <div class="logo-text">Fitness<span>First</span></div>
+                            <div class="logo-image">
+                                <img src="assets/logo.jpg" alt="Deluxe Gym Logo">
+                            </div>
+                            <div class="logo-text-wrapper">
+                                <span class="logo-sub">Fitness First by</span>
+                                <div class="logo-text">Deluxe<span>Gym</span></div>
+                            </div>
                         </div>
                         <p>Lahore's premium fitness center at Pivot Emporium, Model Town Link Road. Train with the best
                             equipment and certified coaches.</p>
@@ -453,20 +479,20 @@
                     <div class="footer-column">
                         <h4>Quick Links</h4>
                         <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="pricing.html">Pricing</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About Us</a></li>
+                            <li><a href="#plans">Pricing</a></li>
+                            <li><a href="#contact">Contact</a></li>
                         </ul>
                     </div>
 
                     <div class="footer-column">
                         <h4>Programs</h4>
                         <ul>
-                            <li><a href="pricing.html">Weight Loss</a></li>
-                            <li><a href="pricing.html">Muscle Building</a></li>
-                            <li><a href="pricing.html">Cardio &amp; HIIT</a></li>
-                            <li><a href="pricing.html">Personal Training</a></li>
+                            <li><a href="#plans">Weight Loss</a></li>
+                            <li><a href="#plans">Muscle Building</a></li>
+                            <li><a href="#plans">Cardio &amp; HIIT</a></li>
+                            <li><a href="#plans">Personal Training</a></li>
                         </ul>
                     </div>
 
